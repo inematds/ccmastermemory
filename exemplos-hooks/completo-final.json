@@ -1,0 +1,54 @@
+{
+  "_comment": "Configuracao completa com os 3 hooks criticos da Trilha 4.",
+  "_comment2": "Adapte os paths para o seu home. Recomenda-se instalar em ~/.claude/settings.json (user-level).",
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c 'import json, sys, os; p = os.path.expanduser(\"~/.memory/prime.md\"); c = open(p).read() if os.path.exists(p) else \"\"; x = os.path.expanduser(\"~/.memory/context.md\"); c2 = open(x).read() if os.path.exists(x) else \"\"; print(json.dumps({\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": (c + chr(10) + chr(10) + c2).strip()}}))'"
+          }
+        ]
+      }
+    ],
+
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c 'import json, sys, os; p = os.path.expanduser(\"~/.memory/context.md\"); c = open(p).read() if os.path.exists(p) else \"\"; print(json.dumps({\"hookSpecificOutput\": {\"hookEventName\": \"PreCompact\", \"additionalContext\": c}}))'"
+          }
+        ]
+      }
+    ],
+
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'P=$(cat); KW=$(echo \"$P\" | tr \"[:upper:]\" \"[:lower:]\"); K=\"\"; if echo \"$KW\" | grep -q \"schema\\|sql\\|banco\"; then K=\"schema.md\"; elif echo \"$KW\" | grep -q \"deploy\\|infra\\|nginx\"; then K=\"infra.md\"; fi; if [ -n \"$K\" ] && [ -f \"$HOME/.memory/knowledge/$K\" ]; then python3 -c \"import json,sys; c=open(\\\"$HOME/.memory/knowledge/$K\\\").read(); print(json.dumps({\\\"hookSpecificOutput\\\":{\\\"hookEventName\\\":\\\"UserPromptSubmit\\\",\\\"additionalContext\\\":c}}))\"; else echo \"{}\"; fi'"
+          }
+        ]
+      }
+    ],
+
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nohup python3 $CLAUDE_PROJECT_DIR/labs/gemini-summary/summarize_session.py > /tmp/summarize.log 2>&1 &"
+          }
+        ]
+      }
+    ]
+  }
+}

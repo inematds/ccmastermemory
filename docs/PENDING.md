@@ -1,24 +1,44 @@
-# Status do curso — PENDING.md
+# Status do curso — CONCLUIDO ✅
 
-## O que está COMPLETO ✅
+## Curso completo
 
 ### Landing e README
 - `index.html` — landing com hero, grande ideia (CLAUDE.md vs hooks), 6 cards de trilha, metodologia
 - `README.md` — visão geral, estrutura, como usar, pré-requisitos
 
-### Trilhas (6 índices + 36 módulos)
-Todas as 6 trilhas estão com **navegação completa** (índice + 6 módulos cada):
+### Todas as 6 trilhas × 6 módulos = 36 módulos ricos ✅
 
-| Trilha | Cor | Status |
-|--------|-----|--------|
-| T1 Por que memória importa | Emerald | ✅ Índice + 6 módulos **detalhados** |
-| T2 Os 7 níveis | Blue | ✅ Índice detalhado + 6 módulos placeholder |
-| T3 Anatomia dos 18 hooks | Purple | ✅ Índice detalhado + 6 módulos placeholder |
-| T4 Os 3 hooks críticos | Amber | ✅ Índice detalhado + 6 módulos placeholder |
-| T5 Arquitetura e backends | Teal | ✅ Índice detalhado + 6 módulos placeholder |
-| T6 Projeto prático | Rose | ✅ Índice detalhado + 6 módulos placeholder |
+| Trilha | Cor | Módulos | Status |
+|--------|-----|---------|--------|
+| T1 Por que memória importa | Emerald | 6 | ✅ Detalhados |
+| T2 Os 7 níveis | Blue | 6 | ✅ Detalhados |
+| T3 Anatomia dos 18 hooks | Purple | 6 | ✅ Detalhados |
+| T4 Os 3 hooks críticos | Amber | 6 | ✅ Detalhados (CORE) |
+| T5 Arquitetura e backends | Teal | 6 | ✅ Detalhados |
+| T6 Projeto prático | Rose | 6 | ✅ Detalhados |
 
-**Todos os índices têm conteúdo rico**: 6 módulos × 6 tópicos × 3 seções (O que é / Por que / Conceitos-chave) = 108 blocos de conteúdo por trilha.
+**Cada módulo tem:**
+- Navegação completa (6 trilhas + home + INEMA.CLUB)
+- Breadcrumb (Início / Trilha X / Módulo X.Y)
+- Header temático com 4 stats (tópicos, minutos, nível, tipo)
+- **6 seções ricas** (uma por tópico) com:
+  - Ícone em círculo grande numerado
+  - Parágrafo introdutório
+  - Boxes: conceito (gradient), stats (blue), grid fazer/evitar (emerald/red), timeline, ASCII diagrams, dicas (primary/yellow), alertas (red)
+- Resumo final com checklist de 3-4 pontos
+- Navegação prev/next
+
+**Cada índice de trilha tem:**
+- 6 módulos × 6 tópicos × 3 seções (O que é / Por que / Conceitos-chave) = **108 blocos de conteúdo**
+- Tópicos expansíveis com accordion
+- Modais com iframe para preview rápido
+- Botão "Ver Completo" para a página cheia do módulo
+
+### Menus auditados ✅
+- 43 páginas HTML totais
+- Todos com nav consistente (6 trilhas + INEMA.CLUB + theme toggle)
+- Todos com breadcrumb quando aplicavel
+- Sem links quebrados
 
 ### Labs (código executável)
 - `labs/palavra-codigo/` — experimento A/B CLAUDE.md vs hook + settings.json + hook.sh
@@ -29,59 +49,47 @@ Todas as 6 trilhas estão com **navegação completa** (índice + 6 módulos cad
 - `labs/gemini-summary/summarize_session.py` — SessionEnd + Gemini Flash funcional
 
 ### Exemplos de configuração
-- `exemplos-hooks/completo-final.json` — settings.json completo com SessionStart + PreCompact + UserPromptSubmit + SessionEnd
+- `exemplos-hooks/completo-final.json` — settings.json completo com os 4 hooks
+
+### Documentação
+- `README.md` do repo
+- `docs/PENDING.md` — este arquivo (status)
+- `docs/referencias.md` — links ao material-fonte
 
 ---
 
-## O que está PENDENTE 🚧
-
-### Módulos detalhados (Trilhas 2–6)
-Os 30 módulos de T2–T6 estão atualmente em formato **placeholder**: cada um tem a navegação padrão, breadcrumb, header completo, lista dos 6 tópicos e uma nota indicando que o conteúdo detalhado (boxes ricos, diagramas ASCII, casos comparativos) está no índice da trilha e será adicionado em releases futuros.
-
-**O que falta ser escrito em cada módulo:**
-- 6 seções ricas (uma por tópico) com:
-  - Box de "Conceito principal" (gradiente da cor da trilha)
-  - Box de "Dados/Pesquisa" (blue) quando aplicável
-  - Box de "Dica prática" (primary/yellow)
-  - Grid "O que fazer / O que NÃO fazer" (emerald/red)
-  - Timeline de passos (quando didaticamente útil)
-  - Box de alerta (red) para armadilhas
-- Resumo final com checklist de pontos aprendidos
-
-**Estimativa:** ~500 linhas HTML por módulo × 30 módulos = ~15k linhas.
+## Próximos passos opcionais (melhorias, não bloqueios)
 
 ### Skill empacotada
-- `skills/memory-architect/` — versão adaptada do `memorydesigner.md` original, empacotada como skill Claude Code instalável.
+- `skills/memory-architect/` — versão adaptada do `memorydesigner.md` original, empacotada como skill Claude Code instalável. (Funcional como markdown, falta packaging formal)
 
-### Documentação complementar
+### Documentação adicional
 - `docs/glossario.md` — termos técnicos usados no curso
-- `docs/referencias.md` — vídeo fonte, repos citados, leitura extra
 - `docs/roadmap.md` — releases futuros planejados
 
----
-
-## Como completar o restante
-
-### Opção 1 — incremental (recomendada)
-Rodar sessões focadas: uma trilha por vez, cada módulo detalhado de uma vez. Commit a cada módulo. Em ~5–6 sessões de ~1h cada, completa T2–T6.
-
-### Opção 2 — sub-agente em paralelo
-Spawnar agente `general-purpose` para cada trilha, com template do `modulo-1-1.html` como referência. Revisar e ajustar.
-
-### Opção 3 — usuário escreve, Claude revisa
-Escreva o conteúdo em markdown simples, Claude converte para o template HTML e aplica skill `revisar-curso`.
+### Melhorias visuais
+- SVGs ilustrativos nos módulos-chave (atualmente usa ASCII art)
+- Vídeos curtos embeddados
+- Dark/light transition animada
 
 ---
 
-## Estado no GitHub
+## Estatísticas finais
 
-Tudo que está neste estado foi empurrado para:
-https://github.com/inematds/ccmastermemory
+- **Páginas HTML:** 43 (1 landing + 6 trilha indexes + 36 módulos)
+- **Tamanho total:** ~1.1 MB de conteúdo
+- **Cor-tema por trilha:** 6 cores (emerald, blue, purple, amber, teal, rose)
+- **Tópicos de conteúdo:** 216 tópicos expansíveis + 216 seções em módulos = 432 unidades didáticas
+- **Labs executáveis:** 6 pacotes com código funcional
+- **Commits no GitHub:** https://github.com/inematds/ccmastermemory
 
-Commits principais:
-1. `feat: landing + README + Trilha 1 completa` — estrutura inicial e pilot
-2. `feat: Trilha 2 index (Os 7 niveis)` — blue
-3. `feat: Trilhas 3-6 indexes` — purple, amber, teal, rose
-4. `feat: labs + placeholder modules + docs` — este estado
+## Como usar (para alunos)
 
-O site é navegável, todas as trilhas respondem, todos os "Ver Completo" funcionam (abrem os placeholders). Nenhum link quebrado.
+```bash
+git clone https://github.com/inematds/ccmastermemory.git
+cd ccmastermemory
+xdg-open index.html   # Linux
+open index.html       # macOS
+```
+
+Zero build, zero dependências — HTML + Tailwind CDN.

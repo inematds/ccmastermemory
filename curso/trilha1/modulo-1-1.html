@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.1: O problema da amnesia | CC Master Memory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+    html:not(.dark) body{background-color:#f8fafc}
+    html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+    html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-500\/20{background-color:rgba(5,150,105,.12)}html:not(.dark) .bg-emerald-500\/10{background-color:rgba(5,150,105,.08)}
+    html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}html:not(.dark) .hover\:bg-emerald-500\/30:hover{background-color:rgba(5,150,105,.18)}
+    html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+    .ascii-box{font-family:'Courier New',monospace;white-space:pre;font-size:13px;line-height:1.4}
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a>
+        <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a>
+        <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a>
+        <a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a>
+        <a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+      </div>
+    </div></div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-emerald-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-emerald-400">Trilha 1</a><span>/</span><span class="text-emerald-400">Modulo 1.1</span></div></nav>
+
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MODULO 1.1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🌀 O problema da amnesia do Claude</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Antes de aprender a consertar, vamos entender <strong class="text-emerald-400">exatamente</strong> o que quebra. Tres tipos de esquecimento, por que acontecem e como medir.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Basico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoria</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🤔 O que acontece quando Claude nao lembra</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Todo usuario de Claude Code ja viveu isso: voce abre uma nova sessao, comeca a explicar o contexto, e sente <strong class="text-emerald-400">deja-vu</strong>. Estava explicando isso ontem tambem. Na semana passada tambem. Essa e a cara da amnesia.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Sintomas visiveis</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Onboarding repetido:</strong> voce reexplica o stack, as decisoes, as restricoes a cada sessao.</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Inconsistencia:</strong> a mesma pergunta rende respostas diferentes em sessoes diferentes.</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Decisoes ja descartadas voltam:</strong> "vamos tentar X" — mas voces ja tentaram e nao deu certo.</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Estilo inconsistente:</strong> ora responde curto, ora prolixo. Sem ancora, o tom vai para onde o vento leva.</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Pratica</h3>
+        <p class="text-neutral-300">Toda vez que voce se pegar reexplicando algo, anote. Ao final da semana, voce tera um mapa do que precisa virar memoria persistente.</p>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🧩 Os 3 tipos de esquecimento</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">"O Claude esqueceu" e uma frase sem precisao. Na pratica, existem <strong class="text-emerald-400">tres</strong> mecanismos de esquecimento distintos, com causas e solucoes diferentes.</p>
+
+      <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6 ascii-box text-neutral-300">{'                                                         \n  OS 3 TIPOS DE ESQUECIMENTO                             \n  =========================                             \n                                                         \n  1. DENTRO DA SESSAO (context dilution)                \n     Causa:    prompt longo, atencao dispersa          \n     Solucao:  UserPromptSubmit hook                   \n                                                         \n  2. ENTRE SESSOES (no persistence)                    \n     Causa:    nova sessao = prompt zerado             \n     Solucao:  SessionStart hook                       \n                                                         \n  3. POS-COMPACTACAO (summary loss)                    \n     Causa:    context overflow forca resumo           \n     Solucao:  PreCompact hook                         \n'}</div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ O que FAZER</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Identificar qual dos 3 tipos voce tem</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Atacar um por vez, comecando pelo mais doloroso</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Medir antes e depois para validar o fix</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ O que NAO fazer</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tratar "esquecimento" como problema unico</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Aplicar todas as solucoes ao mesmo tempo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Confiar em "ajustar prompt" como fix permanente</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">💸 O custo real do retrabalho</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Amnesia tem preco, e ele e maior do que parece. Vamos quantificar.</p>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Calculo conservador</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>Onboarding por sessao:</strong> ~800 tokens (contexto minimo do projeto)</li>
+          <li><strong>Sessoes por dia:</strong> 8 (usuario ativo)</li>
+          <li><strong>Dias por ano:</strong> 200 uteis</li>
+          <li><strong>Total anual:</strong> <strong class="text-blue-400">1.280.000 tokens</strong> so em reexplicacao</li>
+          <li><strong>Custo monetario:</strong> nao e o pior — <strong class="text-blue-400">tempo</strong> e a perda real</li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Pratica</h3>
+        <p class="text-neutral-300">Cronometre 3 sessoes: quanto tempo voce gasta "esquentando o Claude"? Se passa de 5 minutos, voce tem um caso claro.</p>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🔬 Experimento: 3 respostas, 1 pergunta</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Teoria convence, experimento <strong class="text-emerald-400">muda comportamento</strong>. Vamos fazer um mini-lab de 10 minutos.</p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Escolha uma pergunta tecnica do seu contexto</h4>
+            <p class="text-neutral-300 text-sm">Ex: "Como devo estruturar a tabela de pagamentos neste projeto?"</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Rode em 3 sessoes novas, sem CLAUDE.md</h4>
+            <p class="text-neutral-300 text-sm">Abra <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">claude</code> tres vezes em diretorios distintos. Faca a pergunta identica.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Compare as tres respostas</h4>
+            <p class="text-neutral-300 text-sm">Quantas decisoes principais batem? Se menos de 80% alinham, voce tem <strong class="text-emerald-400">drift</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🏗️ Por que acontece: a arquitetura</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A causa raiz e simples: <strong class="text-emerald-400">LLMs nao tem memoria</strong>. O que voce percebe como memoria e, na verdade, contexto reenviado a cada chamada.</p>
+
+      <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6 ascii-box text-neutral-300">{'                                                         \n  COMO "MEMORIA" FUNCIONA EM UM LLM                      \n                                                         \n  Sessao 1:                                             \n    Voce digita ───> prompt (system + user)             \n                      │                                  \n                      ▼                                  \n                    LLM ───> resposta                   \n                                                         \n  Sessao 2 (nova):                                      \n    Prompt zerado!                                       \n    Voce digita ───> prompt (system + user)             \n                      │                                  \n                      ▼                                  \n                    LLM ───> resposta nova              \n                                                         \n  Nao ha "memoria" — ha apenas prompt.                  \n  Memoria = voce se lembrar de reenviar.                \n'}</div>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Implicacao</h3>
+        <p class="text-neutral-300">Nao existe "treinar o Claude no seu projeto". Toda memoria que voce quer e, na verdade, um mecanismo de reinsercao de contexto. Hooks sao esse mecanismo.</p>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">📊 Como medir: indice de consistencia</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Se voce nao pode medir, nao pode melhorar. O indice de consistencia e sua bussola.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📐</span> Formula simples</h3>
+        <div class="bg-dark-800 border border-dark-600 rounded-lg p-4 font-mono text-sm mb-4 text-center">
+          <div class="text-emerald-400">consistencia = respostas_iguais / total_sessoes</div>
+        </div>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong class="text-emerald-400">100%:</strong> deterministico (alvo para informacao critica)</li>
+          <li><strong class="text-emerald-400">80-99%:</strong> aceitavel para preferencias</li>
+          <li><strong class="text-emerald-400">&lt;80%:</strong> problema serio — usuario paga o imposto</li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Pratica</h3>
+        <p class="text-neutral-300">Defina 5 <strong>golden questions</strong> sobre seu projeto. Rode-as antes e depois de cada mudanca no sistema de memoria. Voce vai ter numeros objetivos para defender as suas decisoes.</p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Amnesia e real</strong><span class="text-neutral-400"> — 3 tipos distintos, cada um com causa propria.</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Custo oculto</strong><span class="text-neutral-400"> — mais de 1M tokens por ano em reexplicacao.</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Causa raiz</strong><span class="text-neutral-400"> — LLMs sao stateless; memoria = reinsercao de contexto.</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Voce pode medir</strong><span class="text-neutral-400"> — indice de consistencia e seu baseline.</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3><p class="text-neutral-300">1.2 — Memoria nativa: o que Claude ja lembra</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Trilha</a>
+          <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Proximo Modulo →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+
+  <script>
+    const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+    if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+    t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+  </script>
+</body></html>

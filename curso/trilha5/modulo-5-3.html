@@ -1,50 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 5.3: Backends: markdown ao Pinecone | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-teal-400{color:#0d9488}html:not(.dark) .bg-teal-500\/20{background-color:rgba(13, 148, 136,.12)}html:not(.dark) .bg-teal-500\/10{background-color:rgba(13, 148, 136,.08)}
-    html:not(.dark) .border-teal-500\/30{border-color:rgba(13, 148, 136,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 5.3: Backends: do markdown ao Pinecone | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-teal-400{color:#0d9488}html:not(.dark) .bg-teal-500\/20{background-color:rgba(13, 148, 136,.12)}html:not(.dark) .bg-teal-500\/10{background-color:rgba(13, 148, 136,.08)}
+html:not(.dark) .border-teal-500\/30{border-color:rgba(13, 148, 136,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-teal-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-teal-400">Trilha 5</a><span>/</span><span class="text-teal-400">Modulo 5.3</span></div></nav>
-  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.3</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">💾 Backends: markdown ao Pinecone</h1><p class="text-lg text-neutral-400 max-w-3xl">Quando vale cada um. Matriz de custo x capacidade.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-teal-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-teal-400">Trilha 5</a><span>/</span><span class="text-teal-400">Modulo 5.3</span></div></nav>
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.3</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">💾 Backends: do markdown ao Pinecone</h1><p class="text-lg text-neutral-400 max-w-3xl">Markdown, Obsidian, SQLite, sqlite-vec, ChromaDB, Supabase, Pinecone. Quando vale cada um — com custo, setup e trade-offs claros.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Tecnico</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Infra</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📄 Markdown: a base universal</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>Comece aqui</strong>. 80% dos usuarios nao precisam de mais.</p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">✅</span> Por que markdown ganha</h3><p class="text-neutral-300 mb-4">Vantagens reais:</p><ul class="space-y-2 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span>Zero dependencia — so precisa de editor e grep.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span>Humano legivel — voce le direto no terminal.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span>Git nativo — versionamento e backup automatico.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span>Portavel — funciona em qualquer OS, qualquer editor.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span>Custo zero — nem API, nem DB, nem config.</span></li></ul></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Nao subestime</h3>
+<p class="text-neutral-300">Muito engenheiro quer ir direto pra vetor. Markdown resolve 80% dos casos com 0% da complexidade.</p></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🌐 Obsidian: duas portas</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Mesmo markdown, <strong class='text-teal-400'>dois acessos</strong>: humano no app, IA via CLI.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Arquitetura two-doors</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">         ┌───────────────┐
+         │   vault files │  (markdown .md)
+         │   no disco    │
+         └───────┬───────┘
+                 │
+        ┌────────┴────────┐
+        │                 │
+        ▼                 ▼
+┌──────────────┐  ┌──────────────┐
+│  Obsidian    │  │  Claude Code │
+│  UI, mobile, │  │  via bash    │
+│  backlinks,  │  │  (grep, cat, │
+│  grafo       │  │   Obsidian   │
+│              │  │   CLI)       │
+└──────────────┘  └──────────────┘
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+Voce edita no Obsidian. Claude le os .md.</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Quando vale Obsidian</h3><ul class="space-y-2 text-neutral-300"><li><strong>Ja tem vault pessoal:</strong> sinergia enorme</li><li><strong>Trabalha mobile:</strong> Obsidian Sync ($4/mes)</li><li><strong>Gosta de grafo visual:</strong> ver conexoes</li><li><strong>Publica conhecimento:</strong> Obsidian Publish</li><li><strong>Nao vale se:</strong> voce nao gosta do app e so usaria por Claude</li></ul></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🗃️ SQLite + FTS5</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Quando <strong class='text-teal-400'>grep fica lento</strong>, SQLite e o passo natural. DB embedded, zero config.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Schema minimo</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">CREATE TABLE memories (
+  id INTEGER PRIMARY KEY,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  type TEXT NOT NULL,        -- fact/decision/pattern/...
+  created_at TEXT NOT NULL,
+  access_count INTEGER DEFAULT 0
+);
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-teal-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-teal-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-teal-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-teal-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-teal-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-teal-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-teal-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+-- FTS5 virtual table para busca full-text
+CREATE VIRTUAL TABLE memories_fts USING fts5(
+  title, body, content=memories
+);
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-5-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-5-4.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">Proximo Modulo →</a></div>
-  </main>
+-- Trigger para manter FTS em sync
+CREATE TRIGGER memories_ai AFTER INSERT ON memories BEGIN
+  INSERT INTO memories_fts(rowid, title, body)
+  VALUES (new.id, new.title, new.body);
+END;
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+-- Busca: <50ms em 10k entries
+SELECT id, title FROM memories_fts
+WHERE memories_fts MATCH 'webhook OR idempotency'
+ORDER BY rank LIMIT 5;</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Quando migrar do markdown</h3><ul class="space-y-2 text-neutral-300"><li><strong>Grep &gt; 500ms:</strong> hora de SQLite</li><li><strong>Memorias &gt; 500:</strong> FTS5 vale a pena</li><li><strong>Precisa de filtro por tipo:</strong> SQL vence grep combinado</li><li><strong>Acces_count tracking:</strong> salience scoring precisa</li></ul></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🧠 sqlite-vec + fastembed</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>Semantica local</strong>. Sem API externa, sem custo recorrente, sem latencia de rede.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Setup local</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># Instalar dependencias (Python)
+pip install sqlite-vec fastembed
+
+# Criar index vetorial
+import sqlite3
+import sqlite_vec
+from fastembed import TextEmbedding
+
+db = sqlite3.connect('memory.db')
+db.enable_load_extension(True)
+sqlite_vec.load(db)
+
+db.execute('''
+  CREATE VIRTUAL TABLE vec_memories USING vec0(
+    embedding float[384]
+  )
+''')
+
+# Adicionar memoria
+model = TextEmbedding()  # modelo leve, offline
+emb = list(model.embed(['texto da memoria']))[0]
+db.execute('INSERT INTO vec_memories VALUES (?, ?)',
+           (id, emb.tolist()))
+
+# Buscar 3 mais proximos
+query_emb = list(model.embed(['pergunta']))[0]
+results = db.execute('''
+  SELECT rowid, distance FROM vec_memories
+  WHERE embedding MATCH ?
+  ORDER BY distance LIMIT 3
+''', (query_emb.tolist(),)).fetchall()</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Privacidade + performance</h3><ul class="space-y-2 text-neutral-300"><li><strong>Tudo local:</strong> privacidade total</li><li><strong>Offline:</strong> funciona sem rede</li><li><strong>Custo:</strong> zero recorrente</li><li><strong>Latencia:</strong> ~30ms embed + 10ms search</li></ul></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">☁️ Supabase, Turso, Pinecone</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>Cloud vale</strong> em casos especificos. Na duvida, nao e o seu.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"><div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-4">✓ Cloud vale a pena</h4><ul class="space-y-3 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Time de 3+ pessoas compartilhando memoria</span></li><li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Voce troca entre desktop e mobile frequentemente</span></li><li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Ja paga Supabase/Postgres para outra coisa</span></li><li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Precisa auth e permissoes granulares</span></li></ul></div><div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-4">✗ Cloud e overkill</h4><ul class="space-y-3 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Voce e solo com 1 maquina</span></li><li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Privacidade e critica (medicina, direito)</span></li><li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Budget zero</span></li><li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ainda em fase de experimentar</span></li></ul></div></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">📊 Matriz de decisao</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Tabela unica. Cole na sua documentacao.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Matriz completa</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">| Backend       | Setup | Custo | Privacidade | Multi-dev | Semantica |
+|---------------|-------|-------|-------------|-----------|-----------|
+| Markdown      | 0min  | $0    | total       | git       | nao       |
+| Obsidian      | 10min | $0-4  | total       | Sync      | parcial   |
+| SQLite        | 30min | $0    | total       | nao       | nao       |
+| sqlite-vec    | 1h    | $0    | total       | nao       | sim       |
+| Supabase      | 2h    | $0-25 | cloud       | sim       | pgvector  |
+| Turso         | 1h    | $0-20 | cloud       | sim       | nao       |
+| Pinecone      | 2h    | $50+  | cloud       | sim       | sim       |
+
+Regra: comece na linha 1-2. Sobe so quando medir limitacao real.</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Migration path</h3>
+<p class="text-neutral-300">Markdown → SQLite (script: scan .md, insert). SQLite → sqlite-vec (add virtual table). Sempre reversivel.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Markdown cobre 80%</strong><span class="text-neutral-400"> — nao subestime a base.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Obsidian e markdown + UI</strong><span class="text-neutral-400"> — duas portas para mesmo conteudo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">SQLite e o upgrade natural</strong><span class="text-neutral-400"> — quando busca fica lenta.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Cloud so em casos especificos</strong><span class="text-neutral-400"> — time ou multi-device real.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-teal-400 mb-2">Proximo:</h3><p class="text-neutral-300">5.4 — Multi-sinal: o painel de juizes</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-5-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-5-4.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">Proximo Modulo →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>

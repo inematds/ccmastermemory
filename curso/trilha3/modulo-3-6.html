@@ -1,50 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 3.6: Depuracao e logging | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-purple-400{color:#7c3aed}html:not(.dark) .bg-purple-500\/20{background-color:rgba(124, 58, 237,.12)}html:not(.dark) .bg-purple-500\/10{background-color:rgba(124, 58, 237,.08)}
-    html:not(.dark) .border-purple-500\/30{border-color:rgba(124, 58, 237,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 3.6: Depuracao e logging de hooks | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-purple-400{color:#7c3aed}html:not(.dark) .bg-purple-500\/20{background-color:rgba(124, 58, 237,.12)}html:not(.dark) .bg-purple-500\/10{background-color:rgba(124, 58, 237,.08)}
+html:not(.dark) .border-purple-500\/30{border-color:rgba(124, 58, 237,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-purple-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-purple-400">Trilha 3</a><span>/</span><span class="text-purple-400">Modulo 3.6</span></div></nav>
-  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULO 3.6</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🐛 Depuracao e logging</h1><p class="text-lg text-neutral-400 max-w-3xl">Como saber se seu hook disparou e o que retornou.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-purple-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-purple-400">Trilha 3</a><span>/</span><span class="text-purple-400">Modulo 3.6</span></div></nav>
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULO 3.6</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🐛 Depuracao e logging de hooks</h1><p class="text-lg text-neutral-400 max-w-3xl">Como saber se seu hook disparou, o que ele recebeu e o que retornou. Runbook de 10 bugs mais comuns.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Tecnico</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Operacional</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📝 Log para arquivo em append</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">A <strong class='text-purple-400'>primeira linha</strong> de qualquer hook seu deve ser um log. Unica linha resolve 90% dos 'nao disparou'.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Padrao de log</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env bash
+# Hook com log de disparo
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+LOG="$HOME/.claude/hook.log"
+INPUT=$(cat)
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-purple-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-purple-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-purple-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-purple-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-purple-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-purple-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-purple-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+echo "$(date '+%Y-%m-%d %H:%M:%S') [$(basename $0)] fired" >> "$LOG"
+echo "  input: $(echo $INPUT | tr -d '\n' | head -c 200)" >> "$LOG"
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-3-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="../trilha4/index.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Trilha 4 →</a></div>
-  </main>
+# ... resto do hook
+</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Rotacao simples</h3>
+<p class="text-neutral-300">Uma vez por mes, <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>mv hook.log hook.log.$(date +%Y-%m)</code>. Evita arquivo gigante.</p></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🔍 tail -f no log</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Com o log em lugar, <strong class='text-purple-400'>terminal dedicado</strong> para tail vira seu monitor.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Setup de monitoramento</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># Terminal 1: seu Claude Code rodando
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+# Terminal 2: monitor de hooks
+tail -f ~/.claude/hook.log
+
+# Cada disparo aparece instantaneo:
+# 2026-04-23 10:15:32 [session_start.sh] fired
+#   input: {"cwd":"/home/user/proj",...}
+# 2026-04-23 10:16:45 [user_prompt.sh] fired
+#   input: {"user_message":"Como deploy?",...}</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Filtrar por hook</h3>
+<p class="text-neutral-300"><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>tail -f hook.log | grep session_start</code> para isolar um hook especifico.</p></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🚨 stderr para mensagens</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-purple-400'>stderr do hook aparece no Claude</strong>. Use para debug inline, sem trocar de janela.</p>
+<div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💬</span> Mensagens inline</h3><p class="text-neutral-300 mb-4">Como usar:</p><ul class="space-y-2 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-purple-400 mt-1">•</span><span><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>echo 'debug info' &gt;&amp;2</code> na bash.</span></li><li class="flex items-start space-x-2"><span class="text-purple-400 mt-1">•</span><span><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>sys.stderr.write('info\n')</code> em Python.</span></li><li class="flex items-start space-x-2"><span class="text-purple-400 mt-1">•</span><span>Claude exibe como aviso na sessao, nao afeta a logica.</span></li><li class="flex items-start space-x-2"><span class="text-purple-400 mt-1">•</span><span>Uso: notificar 'hook disparou', 'API cai, usando fallback', 'memoria injetada: 400 tokens'.</span></li></ul></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🧪 Teste isolado: mock input</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Reproduza <strong class='text-purple-400'>exatamente</strong> o que Claude Code manda. Em 5 segundos voce sabe se o hook funciona.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Mock input files</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># Mocks organizados por evento
+mkdir -p ~/.memory/test-mocks
+
+# session_start.json
+cat > ~/.memory/test-mocks/session_start.json <<EOF
+{
+  "hook_event_name": "SessionStart",
+  "session_id": "test-session",
+  "cwd": "$HOME/projects/payments"
+}
+EOF
+
+# user_prompt.json
+cat > ~/.memory/test-mocks/user_prompt.json <<EOF
+{
+  "hook_event_name": "UserPromptSubmit",
+  "cwd": "$HOME/projects/payments",
+  "user_message": "Como configuro webhook?"
+}
+EOF
+
+# Testar
+cat ~/.memory/test-mocks/session_start.json | ./hooks/start.sh</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Versione os mocks</h3>
+<p class="text-neutral-300">Adicione ao git. Outros no time rodam os mesmos testes. Base para regression.</p></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">📊 Metricas: quantas vezes disparou</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Contador simples revela padroes inesperados. Exemplo: PreCompact disparando mais do que voce achava.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Contador simples</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env bash
+# Hook que conta disparos
+
+COUNTER="$HOME/.memory/counters/$(basename $0).count"
+mkdir -p $(dirname $COUNTER)
+
+# Incrementa atomico
+(flock 9; echo $(($(cat $COUNTER 2>/dev/null || echo 0) + 1)) > $COUNTER) 9<>$COUNTER.lock
+
+# Resto do hook...
+
+# Ver metricas
+# $ ls -1 ~/.memory/counters/
+#   session_start.sh.count: 42
+#   pre_compact.sh.count: 7
+#   user_prompt.sh.count: 128</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> O que medir</h3><ul class="space-y-2 text-neutral-300"><li><strong>Disparos por dia:</strong> alinha com volume de uso</li><li><strong>Taxa de PreCompact:</strong> indica quanto suas sessoes crescem</li><li><strong>Ratio user_prompt / session_start:</strong> mensagens por sessao</li><li><strong>Falhas (exit &gt;0):</strong> hooks quebrando silenciosamente</li></ul></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🩹 Os 10 bugs mais comuns</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Checklist direto. Percorra quando seu hook nao disparar ou disparar errado.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Runbook</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">1. Script nao executavel     → chmod +x
+2. Shebang errado            → #!/usr/bin/env bash no topo
+3. Path relativo             → usar $CLAUDE_PROJECT_DIR ou ~
+4. JSON invalido no output   → validar com jq
+5. Permissao nao concedida   → settings 'permissions.allow'
+6. Nome de evento errado     → case-sensitive (SessionStart)
+7. Matcher nao bate          → '' para sempre, ou regex especifico
+8. Timeout estourado         → usar nohup+& para trabalho pesado
+9. stderr poluido            → so avisos uteis, nao prints de debug
+10. Concurrency em arquivo   → flock ou atomic write</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Quando travar</h3>
+<p class="text-neutral-300">Abra 3 terminais: 1) Claude Code, 2) tail -f hook.log, 3) echo input | hook.sh. Uma fonte de informacao em cada. Debug vai rapido.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Log em append</strong><span class="text-neutral-400"> — uma linha resolve 90% dos 'por que nao disparou?'.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">tail -f no log</strong><span class="text-neutral-400"> — feedback de 1 segundo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">stderr aparece no Claude</strong><span class="text-neutral-400"> — use para debug inline.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">10 bugs comuns</strong><span class="text-neutral-400"> — checklist economiza horas.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-purple-400 mb-2">Proximo:</h3><p class="text-neutral-300">Trilha 4 — Os 3 hooks criticos</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-3-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="../trilha4/index.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Trilha 4 →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>

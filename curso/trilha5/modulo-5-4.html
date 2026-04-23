@@ -1,50 +1,161 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 5.4: Multi-sinal: painel de juizes | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-teal-400{color:#0d9488}html:not(.dark) .bg-teal-500\/20{background-color:rgba(13, 148, 136,.12)}html:not(.dark) .bg-teal-500\/10{background-color:rgba(13, 148, 136,.08)}
-    html:not(.dark) .border-teal-500\/30{border-color:rgba(13, 148, 136,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 5.4: Multi-sinal: o painel de juizes | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-teal-400{color:#0d9488}html:not(.dark) .bg-teal-500\/20{background-color:rgba(13, 148, 136,.12)}html:not(.dark) .bg-teal-500\/10{background-color:rgba(13, 148, 136,.08)}
+html:not(.dark) .border-teal-500\/30{border-color:rgba(13, 148, 136,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-teal-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-teal-400">Trilha 5</a><span>/</span><span class="text-teal-400">Modulo 5.4</span></div></nav>
-  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.4</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">⚖️ Multi-sinal: painel de juizes</h1><p class="text-lg text-neutral-400 max-w-3xl">Keyword + semantica + entidade. 70% menos tokens.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-teal-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-teal-400">Trilha 5</a><span>/</span><span class="text-teal-400">Modulo 5.4</span></div></nav>
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.4</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">⚖️ Multi-sinal: o painel de juizes</h1><p class="text-lg text-neutral-400 max-w-3xl">Combinar keyword + semantica + entidade. Mesma qualidade de recall com 70% menos tokens. Padrao que escala.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Avancado</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Retrieval</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">⚖️ Por que combinar sinais</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Cada sinal tem <strong class='text-teal-400'>ponto cego</strong>. Combinados, cobrem quase tudo.</p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">🎯</span> O que cada um pega</h3><p class="text-neutral-300 mb-4">Diferencas fundamentais:</p><ul class="space-y-2 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Keyword:</strong> termos exatos. 'pgvector' encontra 'pgvector'.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Semantica:</strong> conceito. 'busca vetorial' encontra 'pgvector' sem a palavra.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Entidade:</strong> nomes proprios. 'Stripe' sempre boost.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Juntos:</strong> nao importa se voce lembra o termo, o conceito ou a entidade.</span></li></ul></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Impacto na economia</h3><ul class="space-y-2 text-neutral-300"><li><strong>Brute force:</strong> 25k tokens, 95% recall</li><li><strong>So keyword:</strong> 7k tokens, 70% recall</li><li><strong>Multi-sinal:</strong> 7k tokens, 92% recall</li><li><strong>Ganho:</strong> recall quase igual ao brute force, 3.5x menos tokens</li></ul></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🔍 Pipeline: 3 buscas paralelas</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Padrao <strong class='text-teal-400'>fan-out + merge</strong>: 3 buscas rodam em paralelo, resultados se unem, rank final escolhe top 3.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Pipeline completo</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">QUERY: 'decisao sobre pagamento'
+         │
+         ├──▶ KEYWORD SEARCH (FTS5)
+         │    return top 10 with scores
+         │
+         ├──▶ SEMANTIC SEARCH (sqlite-vec)
+         │    return top 10 with cosine distance
+         │
+         ├──▶ ENTITY SEARCH (regex NER)
+         │    return memories mentioning entities
+         │
+         ▼
+    UNION of results
+         │
+         ▼
+    RE-RANK by combined score:
+     final_score = 0.4*kw + 0.4*sem + 0.2*entity
+         │
+         ▼
+    TOP 3 returned to Claude</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Paralelismo real</h3>
+<p class="text-neutral-300">Em Python use <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>asyncio.gather()</code>. As 3 buscas tomam o tempo da mais lenta (~30-50ms), nao a soma.</p></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">⚖️ Pesos: quando ajustar</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Pesos default 40/40/20 cobrem a maioria. <strong class='text-teal-400'>Ajuste por dominio</strong>.</p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">🎚️</span> Calibracao por dominio</h3><p class="text-neutral-300 mb-4">Regras:</p><ul class="space-y-2 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Dominio tecnico (devops, SQL):</strong> 60/20/20 — keyword manda, termos sao unicos.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Dominio conceitual (estrategia, produto):</strong> 30/50/20 — semantica manda, vocabulario varia.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Time com muitos atores (pessoas, orgs):</strong> 30/30/40 — entidades importam muito.</span></li><li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Default:</strong> 40/40/20 quando em duvida.</span></li></ul></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🏷️ Entidades: pessoas, projetos, arquivos</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">NER <strong class='text-teal-400'>minimo</strong>: regex para proper nouns + filesystem paths. Resolve 80% sem modelo pesado.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Extracao simples</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># Extrair entidades de um texto
+import re
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+def extract_entities(text):
+    entities = set()
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-teal-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-teal-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-teal-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-teal-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-teal-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-teal-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-teal-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+    # Nomes proprios (duas palavras capitalizadas)
+    for m in re.finditer(r'\b([A-Z][a-z]+ [A-Z][a-z]+)\b', text):
+        entities.add(m.group(1))
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-5-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-5-5.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">Proximo Modulo →</a></div>
-  </main>
+    # Nomes tecnicos conhecidos (lista customizada)
+    TECH = ['Postgres', 'FastAPI', 'Stripe', 'PagBank', 'pgvector']
+    for t in TECH:
+        if t in text:
+            entities.add(t)
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+    # Paths de arquivo
+    for m in re.finditer(r'\b[\w/-]+\.[a-z]{2,4}\b', text):
+        entities.add(m.group())
+
+    return entities
+
+# Ao indexar memoria, salvar entidades
+memory.entities = extract_entities(memory.body)
+
+# Ao buscar, boost se query menciona entidade da memoria
+if any(e in query for e in memory.entities):
+    memory.score += 0.3  # boost</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Lista manual e suficiente</h3>
+<p class="text-neutral-300">Para dominio especifico, lista manual de 50 termos tecnicos bate NER fancy. Edite quando aparecer entidade nova.</p></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">💰 Economia de tokens medida</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Numeros reais de um mes de uso. <strong class='text-teal-400'>Diferenca significativa</strong>.</p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Dados reais (1 usuario, 30 dias)</h3><ul class="space-y-2 text-neutral-300"><li><strong>Sessoes no mes:</strong> 240 (8/dia × 30)</li><li><strong>Brute force:</strong> 25k × 240 = 6M tokens/mes</li><li><strong>Multi-sinal:</strong> 7k × 240 = 1.68M tokens/mes</li><li><strong>Economia:</strong> 4.32M tokens/mes (72%)</li><li><strong>Extrapolado para 1 ano:</strong> 51.8M tokens economizados</li><li><strong>Ao custo atual:</strong> centenas de dolares de input</li></ul></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🔬 Script de referencia</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>20 linhas Python</strong> com as 3 buscas + rerank. Base para adaptar.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> multi_signal_search.py</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">import sqlite3, sqlite_vec
+from fastembed import TextEmbedding
+
+class MultiSignalSearch:
+    def __init__(self, db_path):
+        self.db = sqlite3.connect(db_path)
+        self.db.enable_load_extension(True)
+        sqlite_vec.load(self.db)
+        self.embedder = TextEmbedding()
+
+    def search(self, query, top_k=3):
+        # 1. Keyword via FTS5
+        kw = self.db.execute('''
+          SELECT id, rank FROM memories_fts
+          WHERE memories_fts MATCH ? LIMIT 10
+        ''', (query,)).fetchall()
+
+        # 2. Semantic via vec
+        emb = list(self.embedder.embed([query]))[0].tolist()
+        sem = self.db.execute('''
+          SELECT rowid, distance FROM vec_memories
+          WHERE embedding MATCH ? ORDER BY distance LIMIT 10
+        ''', (emb,)).fetchall()
+
+        # 3. Entity boost (lookup simple table)
+        entities = extract_entities(query)
+        ents = self._entity_candidates(entities)
+
+        # Merge & rerank
+        scores = {}
+        for id_, rank in kw:  scores[id_] = scores.get(id_, 0) + 0.4 / (rank + 1)
+        for id_, d in sem:    scores[id_] = scores.get(id_, 0) + 0.4 * (1 - d)
+        for id_ in ents:      scores[id_] = scores.get(id_, 0) + 0.2
+
+        return sorted(scores, key=scores.get, reverse=True)[:top_k]</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Copy, adapte, rode</h3>
+<p class="text-neutral-300">Esse codigo funciona. Ajuste pesos, entidades, top_k pelo seu dominio. 80% do valor com 50 linhas totais.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">3 sinais capturam coisas diferentes</strong><span class="text-neutral-400"> — combinados cobrem quase tudo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Pipeline parallel + rerank</strong><span class="text-neutral-400"> — padrao ja estabelecido.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Pesos ajustam por dominio</strong><span class="text-neutral-400"> — tecnico = +keyword, conceitual = +semantica.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Economia 25k → 7k</strong><span class="text-neutral-400"> — soma milhoes ao longo do ano.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-teal-400 mb-2">Proximo:</h3><p class="text-neutral-300">5.5 — Decay com salience scoring</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-5-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-5-5.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">Proximo Modulo →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>

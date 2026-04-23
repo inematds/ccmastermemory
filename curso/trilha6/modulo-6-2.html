@@ -1,50 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 6.2: Construindo ~/.memory/ | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-rose-400{color:#9f1239}html:not(.dark) .bg-rose-500\/20{background-color:rgba(225, 29, 72,.12)}html:not(.dark) .bg-rose-500\/10{background-color:rgba(225, 29, 72,.08)}
-    html:not(.dark) .border-rose-500\/30{border-color:rgba(225, 29, 72,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 6.2: Construindo ~/.memory/ do zero | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-rose-400{color:#9f1239}html:not(.dark) .bg-rose-500\/20{background-color:rgba(225, 29, 72,.12)}html:not(.dark) .bg-rose-500\/10{background-color:rgba(225, 29, 72,.08)}
+html:not(.dark) .border-rose-500\/30{border-color:rgba(225, 29, 72,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.2</span></div></nav>
-  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.2</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🏗️ Construindo ~/.memory/</h1><p class="text-lg text-neutral-400 max-w-3xl">Do zero a funcionando: pastas, seed, hooks, teste.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.2</span></div></nav>
+<header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.2</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🏗️ Construindo ~/.memory/ do zero</h1><p class="text-lg text-neutral-400 max-w-3xl">Passo a passo: estrutura de pastas, seed files, hooks, primeira sessao validada. 45 minutos para sistema funcional.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Pratico</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Setup</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📁 Estrutura de pastas</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-rose-400'>Seis pastas</strong>, cada uma com proposito claro. Estrutura enxuta evita poluicao.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Layout padrao</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">~/.memory/
+├── prime.md               (identidade, injetado SessionStart)
+├── context.md             (contexto critico, injetado SessionStart+PreCompact)
+├── knowledge/             (long-term pesquisado)
+│   ├── facts/
+│   ├── decisions/
+│   ├── patterns/
+│   └── preferences/
+├── archive/               (memorias arquivadas por decay)
+│   └── 2026-Q1/
+├── hooks/                 (scripts executaveis)
+│   ├── session_start.sh
+│   ├── pre_compact.sh
+│   ├── user_prompt.sh
+│   └── session_end.sh
+├── scripts/               (manutencao, nao hooks)
+│   ├── promote.py
+│   ├── decay.py
+│   └── health_check.py
+└── CLAUDE.md              (regras promovidas)
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+# Comando de criacao
+mkdir -p ~/.memory/{knowledge/{facts,decisions,patterns,preferences},archive,hooks,scripts}
+touch ~/.memory/{prime.md,context.md,CLAUDE.md}</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Nomes importam</h3>
+<p class="text-neutral-300">Use os nomes do curso. Quando voce compartilha com colega que tambem conhece o padrao, ele entende em segundos.</p></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🌱 Arquivos-semente</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Sistema vazio <strong class='text-rose-400'>nao ajuda ninguem</strong>. Preencha prime.md e context.md com dados reais ANTES de testar.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Seeds obrigatorios</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># prime.md (copie template do modulo 4.2, edite valores)
+Role: Backend engineer
+Stack: Python, FastAPI, Postgres
+Timezone: America/Sao_Paulo
+Style: PRs pequenos, test-first
+Team: Payments
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-rose-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-rose-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-rose-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-rose-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-rose-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-rose-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-rose-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+# Diretrizes para Claude
+- Responder em PT-BR
+- Checar context.md antes de sugerir
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-6-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-6-3.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a></div>
-  </main>
+# context.md (copie template do modulo 4.4, edite)
+## Projeto ativo
+payments-v2
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+## Foco atual
+Implementar retry logic no webhook da Stripe
+
+## Bloqueios
+- Aguardando API key de staging
+
+## Ultima decisao
+Escolhemos FastAPI (2026-04-20)
+
+## Proximo passo
+Teste de integracao para webhook chunked</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Use dados reais</h3>
+<p class="text-neutral-300">Nao invente 'projeto-teste'. Use o projeto ATUAL. Primeira sessao com dados reais prova o sistema.</p></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🪝 Hooks em settings.json</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Wire os <strong class='text-rose-400'>4 hooks principais</strong>. User-level: <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>~/.claude/settings.json</code>.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> settings.json completo</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">{
+  "hooks": {
+    "SessionStart": [{
+      "matcher": "",
+      "hooks": [{
+        "type": "command",
+        "command": "$HOME/.memory/hooks/session_start.sh"
+      }]
+    }],
+    "PreCompact": [{
+      "matcher": "",
+      "hooks": [{
+        "type": "command",
+        "command": "$HOME/.memory/hooks/pre_compact.sh"
+      }]
+    }],
+    "UserPromptSubmit": [{
+      "matcher": "",
+      "hooks": [{
+        "type": "command",
+        "command": "$HOME/.memory/hooks/user_prompt.sh"
+      }]
+    }],
+    "SessionEnd": [{
+      "matcher": "",
+      "hooks": [{
+        "type": "command",
+        "command": "nohup $HOME/.memory/hooks/session_end.sh &amp;"
+      }]
+    }]
+  }
+}</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> SessionEnd com nohup &amp;</h3>
+<p class="text-neutral-300">Ele roda em background. Proxima sessao nao espera. Resumo via Gemini acontece sem voce notar.</p></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">✅ Teste de integracao</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Antes de confiar, <strong class='text-rose-400'>golden question test</strong>. Abra sessao, pergunte algo que so seu prime.md sabe.</p>
+<div class="space-y-6 mb-6"><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">1</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Defina golden question</h4><p class="text-neutral-300 text-sm">Algo especifico seu. Ex: 'qual meu projeto ativo?' — resposta esperada: 'payments-v2'.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">2</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Feche TODAS sessoes anteriores</h4><p class="text-neutral-300 text-sm">Para garantir que e sessao fresh.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">3</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Abra nova sessao em diretorio neutro</h4><p class="text-neutral-300 text-sm">Claude Code em $HOME para evitar vies de cwd.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">4</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Faca a golden question</h4><p class="text-neutral-300 text-sm">Antes de qualquer outra coisa.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">5</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Valide resposta literal</h4><p class="text-neutral-300 text-sm">Bateu com o que esta no prime/context? Sistema funciona.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">6</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Repita 5 vezes</h4><p class="text-neutral-300 text-sm">5/5 acertos = deterministico. &lt;5/5 = debugar.</p></div></div></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Automatize depois</h3>
+<p class="text-neutral-300">Script que abre Claude Code headless, faz pergunta, valida resposta. CI para seu sistema de memoria.</p></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🎁 Git: versione o sistema</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Seu <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>~/.memory/</code> e ativo valioso. <strong class='text-rose-400'>Tratar como repo</strong>.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Git setup</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">cd ~/.memory
+git init
+git add .
+git commit -m 'initial memory system'
+
+# Remote privado (GitHub/GitLab/Codeberg)
+git remote add origin git@github.com:SEU_USER/private-memory.git
+git push -u origin main
+
+# .gitignore
+cat &gt; .gitignore &lt;&lt;EOF
+.log
+.cache/
+*.tmp
+EOF
+
+# Commit automatico semanal (cron)
+# 0 3 * * 0  cd ~/.memory && git add -A && git commit -m 'weekly snapshot' && git push</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Beneficios do git</h3><ul class="space-y-2 text-neutral-300"><li><strong>Rollback:</strong> se editar context.md errado, reverte</li><li><strong>Audit:</strong> 'quando adicionei essa regra?' → git blame</li><li><strong>Multi-device:</strong> clone em laptop + desktop</li><li><strong>Backup offsite:</strong> GitHub tem SLA melhor que sua maquina</li></ul></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">📦 Backup e portabilidade</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Alem de git, <strong class='text-rose-400'>segundo backup</strong> local via tar. Paranoia compensa.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Backup dual</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># 1. Git remote (ja configurado acima)
+
+# 2. Tar local diario via cron
+#    Roda 2h da manha, mantem 30 dias
+0 2 * * * tar -czf ~/backup/memory-$(date +\%Y\%m\%d).tgz ~/.memory &amp;&amp; find ~/backup -name 'memory-*' -mtime +30 -delete
+
+# 3. Sync opcional para cloud (rclone)
+0 3 * * * rclone copy ~/backup/ remote:memory-backups/ --max-age 31d
+
+# Verificar integridade
+$ ls -lah ~/backup/
+# -rw-r--r-- 2026-04-23 memory-20260423.tgz  5.2M
+# -rw-r--r-- 2026-04-22 memory-20260422.tgz  5.1M
+# ...</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Disaster recovery</h3>
+<p class="text-neutral-300">Laptop morreu? <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>git clone</code> → sistema funcionando em 5 minutos. Sem git? <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>tar -xzf</code> → igual.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Estrutura de 6 pastas</strong><span class="text-neutral-400"> — padrao versionavel.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Seeds com conteudo real</strong><span class="text-neutral-400"> — sistema vazio nao ajuda.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Hooks wire com settings.json</strong><span class="text-neutral-400"> — testar cada um isoladamente.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">E2E valida antes de confiar</strong><span class="text-neutral-400"> — golden questions.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-rose-400 mb-2">Proximo:</h3><p class="text-neutral-300">6.3 — Scripts: promote.py e decay.py</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-6-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-6-3.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>

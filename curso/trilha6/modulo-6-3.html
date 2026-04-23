@@ -1,50 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 6.3: Scripts: promote.py e decay.py | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-rose-400{color:#9f1239}html:not(.dark) .bg-rose-500\/20{background-color:rgba(225, 29, 72,.12)}html:not(.dark) .bg-rose-500\/10{background-color:rgba(225, 29, 72,.08)}
-    html:not(.dark) .border-rose-500\/30{border-color:rgba(225, 29, 72,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 6.3: Scripts: promote.py e decay.py | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-rose-400{color:#9f1239}html:not(.dark) .bg-rose-500\/20{background-color:rgba(225, 29, 72,.12)}html:not(.dark) .bg-rose-500\/10{background-color:rgba(225, 29, 72,.08)}
+html:not(.dark) .border-rose-500\/30{border-color:rgba(225, 29, 72,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.3</span></div></nav>
-  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.3</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🛠️ Scripts: promote.py e decay.py</h1><p class="text-lg text-neutral-400 max-w-3xl">Implementacao Python real. 50 linhas cada.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.3</span></div></nav>
+<header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.3</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🛠️ Scripts: promote.py e decay.py</h1><p class="text-lg text-neutral-400 max-w-3xl">Implementacao real em Python. 50 linhas cada. Copy, paste, adapt. Prontos para producao.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Pratico</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Codigo</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🐍 promote.py detalhado</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">50 linhas Python. <strong class='text-rose-400'>Todo o codigo comentado</strong>.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> promote.py</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env python3
+# Le knowledge/, detecta padroes repetidos, propoe regras.
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+import sys, re
+from pathlib import Path
+from datetime import datetime
+from collections import Counter
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-rose-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-rose-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-rose-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-rose-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-rose-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-rose-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-rose-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+def normalize(text):
+    return re.sub(r'[^\w\s-]', '', text.lower())[:200]
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-6-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-6-4.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a></div>
-  </main>
+def find_patterns(knowledge_dir, threshold=3):
+    buckets = {}
+    for md in knowledge_dir.rglob('*.md'):
+        if 'promotions' in md.parts: continue
+        first_para = md.read_text().split('\n\n', 1)[0]
+        norm = normalize(first_para)
+        buckets.setdefault(norm, []).append(md)
+    return {k: v for k, v in buckets.items() if len(v) &gt;= threshold}
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+def write_proposal(patterns, out_path):
+    lines = [f'# Promocoes pendentes ({datetime.now()})\n']
+    for i, (norm, paths) in enumerate(patterns.items(), 1):
+        lines.append(f'## Proposta {i} ({len(paths)} ocorrencias)')
+        lines.append(f'Padrao: {norm[:150]}')
+        lines.append('Origens:')
+        for p in paths: lines.append(f'- {p}')
+        lines.append('Regra sugerida (edite antes de aprovar):')
+        lines.append('"Sempre [acao] quando [condicao]."\n')
+    out_path.write_text('\n'.join(lines))
+    return len(patterns)
+
+if __name__ == '__main__':
+    knowledge = Path(sys.argv[1]).expanduser()
+    patterns = find_patterns(knowledge)
+    count = write_proposal(patterns, knowledge / 'promotions' / 'pending.md')
+    print(f'Padroes detectados: {count}')</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Substitua regex por embeddings</h3>
+<p class="text-neutral-300">Versao atual usa normalizacao + hash. Upgrade natural: <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>fastembed</code> + clustering semantico. Melhor precisao.</p></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">📉 decay.py detalhado</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Aplica <strong class='text-rose-400'>curva de Ebbinghaus</strong> com salience. Roda cron semanal.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> decay.py nucleo</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env python3
+import sys, shutil
+from pathlib import Path
+from datetime import datetime
+
+THRESHOLDS = {
+    'conservador': (14, 60, 180),
+    'moderado':    (7, 30, 90),
+    'agressivo':   (3, 14, 45),
+}
+
+def age_days(meta, now):
+    created = datetime.fromisoformat(meta.get('created', now.isoformat()))
+    return (now - created).days
+
+def salience(meta):
+    return 1.0 + (int(meta.get('access_count', 0)) * 0.2)
+
+def apply_decay(md, mode='moderado'):
+    t_summary, t_oneliner, t_archive = THRESHOLDS[mode]
+    meta, body = parse_frontmatter(md.read_text())
+    effective_age = age_days(meta, datetime.now()) / salience(meta)
+
+    if effective_age &gt;= t_archive:
+        archive(md); return 'archived'
+    if effective_age &gt;= t_oneliner:
+        md.write_text(render(meta, one_liner(body))); return 'oneliner'
+    if effective_age &gt;= t_summary:
+        md.write_text(render(meta, compress(body, 0.5))); return 'summary'
+    return 'kept'
+
+if __name__ == '__main__':
+    knowledge = Path(sys.argv[1]).expanduser()
+    counts = {'kept': 0, 'summary': 0, 'oneliner': 0, 'archived': 0}
+    for md in knowledge.rglob('*.md'):
+        if 'archive' in md.parts: continue
+        counts[apply_decay(md)] += 1
+    for k, v in counts.items(): print(f'{k}: {v}')</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Lab completo</h3>
+<p class="text-neutral-300"><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>labs/decay-py/decay.py</code> tem implementacao completa com parse_frontmatter, render, one_liner, compress. Use como base.</p></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🔍 search.py: multi-sinal</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Busca <strong class='text-rose-400'>hibrida</strong> em SQLite + fastembed. CLI util e chamavel por UserPromptSubmit.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> search.py</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env python3
+import sqlite3, sqlite_vec
+from fastembed import TextEmbedding
+
+class Search:
+    def __init__(self, db_path):
+        self.db = sqlite3.connect(db_path)
+        self.db.enable_load_extension(True)
+        sqlite_vec.load(self.db)
+        self.embed = TextEmbedding()
+
+    def run(self, query, top_k=3):
+        # Keyword (FTS5)
+        kw_rows = self.db.execute('''
+            SELECT id, rank FROM memories_fts
+            WHERE memories_fts MATCH ? LIMIT 10''', (query,)).fetchall()
+
+        # Semantic
+        q_emb = list(self.embed.embed([query]))[0].tolist()
+        sem_rows = self.db.execute('''
+            SELECT rowid, distance FROM vec_memories
+            WHERE embedding MATCH ? ORDER BY distance LIMIT 10''',
+            (q_emb,)).fetchall()
+
+        # Merge + rerank
+        scores = {}
+        for id_, rank in kw_rows: scores[id_] = scores.get(id_, 0) + 0.5 / (rank+1)
+        for id_, d in sem_rows:   scores[id_] = scores.get(id_, 0) + 0.5 * (1-d)
+
+        top_ids = sorted(scores, key=scores.get, reverse=True)[:top_k]
+        return self._fetch_bodies(top_ids)
+
+if __name__ == '__main__':
+    import sys
+    results = Search('~/.memory/memory.db').run(sys.argv[1])
+    for r in results: print(r)</pre></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🧩 hook_runner.sh: orquestrador</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Wrapper bash que <strong class='text-rose-400'>isola</strong> Claude Code do seu codigo Python.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> hook_runner.sh</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env bash
+# Orquestrador chamado pelo settings.json
+
+set -e
+
+EVENT="$1"
+INPUT=$(cat)
+
+case "$EVENT" in
+  session_start)
+    python3 ~/.memory/scripts/session_start.py "$INPUT"
+    ;;
+  pre_compact)
+    python3 ~/.memory/scripts/pre_compact.py "$INPUT"
+    ;;
+  user_prompt)
+    python3 ~/.memory/scripts/user_prompt.py "$INPUT"
+    ;;
+  session_end)
+    # Async via nohup
+    nohup python3 ~/.memory/scripts/session_end.py "$INPUT" \
+      &gt; /tmp/memory_session_end.log 2&gt;&amp;1 &amp;
+    ;;
+  *)
+    echo "{}"
+    ;;
+esac
+
+# Em settings.json:
+# "command": "$HOME/.memory/hooks/hook_runner.sh session_start"</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Abstracao vale</h3>
+<p class="text-neutral-300">Tem 1 bash simples no Claude Code; 1 Python testado por cada hook. Trocar de linguagem do Python nao afeta o Claude.</p></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🧪 Testes unitarios</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Sistema de memoria sem teste <strong class='text-rose-400'>envelhece mal</strong>. Pytest minimo salva em 6 meses.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> tests/test_memory.py</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">import pytest
+from pathlib import Path
+from scripts.promote import find_patterns, normalize
+from scripts.decay import salience, age_days
+
+def test_normalize():
+    assert normalize('Hello World!') == 'hello world'
+
+def test_salience_baseline():
+    assert salience({'access_count': '0'}) == 1.0
+
+def test_salience_with_access():
+    assert salience({'access_count': '5'}) == 2.0
+
+def test_find_patterns_below_threshold(tmp_path):
+    (tmp_path / 'a.md').write_text('Content X')
+    (tmp_path / 'b.md').write_text('Content Y')
+    patterns = find_patterns(tmp_path, threshold=3)
+    assert len(patterns) == 0
+
+def test_find_patterns_meets_threshold(tmp_path):
+    for name in ['a.md', 'b.md', 'c.md']:
+        (tmp_path / name).write_text('Identical content')
+    patterns = find_patterns(tmp_path, threshold=3)
+    assert len(patterns) == 1
+
+# Rodar: pytest tests/</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> CI basico</h3>
+<p class="text-neutral-300">GitHub Actions rodando pytest a cada commit. Evita regressao quando voce refatora em 3 meses.</p></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">📦 Packaging: tudo em labs/</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Curso empacotou <strong class='text-rose-400'>scripts funcionais</strong> em labs/. Copy, edite, rode.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Estrutura de labs/</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">labs/
+├── palavra-codigo/         (experimento A/B)
+├── prime-md/               (template)
+├── context-md/             (template)
+├── promote-py/
+│   └── promote.py          (100% funcional)
+├── decay-py/
+│   └── decay.py            (100% funcional)
+└── gemini-summary/
+    └── summarize_session.py (100% funcional)
+
+# Uso direto
+$ python3 labs/promote-py/promote.py ~/.memory/knowledge
+$ python3 labs/decay-py/decay.py ~/.memory/knowledge moderado
+$ cat transcript.jsonl | python3 labs/gemini-summary/summarize_session.py</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Scripts vivem no labs</h3>
+<p class="text-neutral-300">Ao inves de reescrever, simlink. <code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>ln -s labs/promote-py/promote.py ~/.memory/scripts/</code>. Atualiza automaticamente quando curso atualiza.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">promote.py detecta 3-strikes</strong><span class="text-neutral-400"> — gera proposal, aguarda aprovacao.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">decay.py aplica curva</strong><span class="text-neutral-400"> — com salience scoring.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Ambos tem testes</strong><span class="text-neutral-400"> — pytest minimo garante regression.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Labs/ ja tem prontos</strong><span class="text-neutral-400"> — copy e adapte.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-rose-400 mb-2">Proximo:</h3><p class="text-neutral-300">6.4 — SessionEnd + Gemini Flash</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-6-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-6-4.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>

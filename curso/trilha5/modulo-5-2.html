@@ -1,50 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 5.2: Estrutura: flat vs taxonomia vs grafo | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-teal-400{color:#0d9488}html:not(.dark) .bg-teal-500\/20{background-color:rgba(13, 148, 136,.12)}html:not(.dark) .bg-teal-500\/10{background-color:rgba(13, 148, 136,.08)}
-    html:not(.dark) .border-teal-500\/30{border-color:rgba(13, 148, 136,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 5.2: Estrutura: flat, taxonomia, grafo | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-teal-400{color:#0d9488}html:not(.dark) .bg-teal-500\/20{background-color:rgba(13, 148, 136,.12)}html:not(.dark) .bg-teal-500\/10{background-color:rgba(13, 148, 136,.08)}
+html:not(.dark) .border-teal-500\/30{border-color:rgba(13, 148, 136,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-teal-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-teal-400">Trilha 5</a><span>/</span><span class="text-teal-400">Modulo 5.2</span></div></nav>
-  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.2</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🗂️ Estrutura: flat vs taxonomia vs grafo</h1><p class="text-lg text-neutral-400 max-w-3xl">De 61% a 95% em recall.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-teal-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-teal-400">Trilha 5</a><span>/</span><span class="text-teal-400">Modulo 5.2</span></div></nav>
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULO 5.2</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">🗂️ Estrutura: flat, taxonomia, grafo</h1><p class="text-lg text-neutral-400 max-w-3xl">Como organizar os arquivos. Trade-off direto entre simplicidade e recall. Numeros concretos para decidir.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Design</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Arquitetura</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📄 Flat: um arquivo, append-only</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>Minimo viavel</strong>. Zero decisao de estrutura. Comece aqui.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Estrutura flat</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">~/.memory/
+└── knowledge.md
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+Um arquivo com todas as memorias.
+Append-only: cada nova memoria vira paragrafo com data.
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-teal-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-teal-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-teal-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-teal-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-teal-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-teal-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-teal-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+Exemplo:
+---
+## 2026-04-20
+Decisao: usar FastAPI no payments-v2.
+Razao: async nativo, 80% endpoints sao IO-bound.
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-5-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-5-3.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">Proximo Modulo →</a></div>
-  </main>
+## 2026-04-21
+Fato: pgvector suporta HNSW index desde v0.5.
+Relevante para nossa busca semantica.
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+## 2026-04-22
+Padrao: sempre idempotency key em webhook.
+Observado em Stripe, PayPal, PagBank. 3x.</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Caracteristicas</h3><ul class="space-y-2 text-neutral-300"><li><strong>Setup:</strong> 0 minutos</li><li><strong>Busca:</strong> grep</li><li><strong>Recall:</strong> 61% (baseline)</li><li><strong>Cap util:</strong> ~100 memorias</li><li><strong>Migracao futura:</strong> facil (script ler e distribuir)</li></ul></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🗄️ Taxonomia de 5 tipos</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>Sweet spot</strong>: ganho significativo com esforço moderado.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Estrutura taxonomica</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">~/.memory/knowledge/
+├── facts/          (como algo e)
+│   ├── postgres-vector-support.md
+│   └── lambda-payload-limit.md
+├── decisions/      (escolhas feitas)
+│   ├── 2026-04-20-fastapi-over-flask.md
+│   └── 2026-04-22-webhook-architecture.md
+├── patterns/       (regras recorrentes)
+│   ├── idempotency-in-webhooks.md
+│   └── small-prs-with-tests.md
+├── preferences/    (gostos pessoais)
+│   └── async-over-callbacks.md
+└── events/         (acontecimentos)
+    └── 2026-04-22-incident-timeout.md</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Ganho</h3><ul class="space-y-2 text-neutral-300"><li><strong>Recall:</strong> 82% (+34% vs flat)</li><li><strong>Busca filtrada:</strong> 'so fatos sobre X'</li><li><strong>Promotion mais clara:</strong> pattern vira regra em CLAUDE.md</li><li><strong>Setup adicional:</strong> 15 minutos de organizacao inicial</li></ul></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🌳 Hierarquia espacial</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Pastas aninhadas por <strong class='text-teal-400'>escopo</strong>. Otimo quando voce tem projetos com sub-areas.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Estrutura hierarquica</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">~/.memory/knowledge/
+├── shared/                    (cross-projeto)
+│   └── python-patterns.md
+├── projects/
+│   ├── payments-v2/
+│   │   ├── decisions/
+│   │   │   └── idempotency.md
+│   │   ├── patterns/
+│   │   │   └── webhook-retry.md
+│   │   └── facts/
+│   │       └── stripe-quirks.md
+│   └── landing-redesign/
+│       ├── decisions/
+│       └── patterns/
+└── personal/
+    ├── workflow.md
+    └── style.md</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Quando vale</h3><ul class="space-y-2 text-neutral-300"><li><strong>Recall:</strong> 95% no nivel mais profundo</li><li><strong>Isolamento:</strong> projetos nao se misturam</li><li><strong>Adequado para:</strong> 3+ projetos ativos, &gt;300 memorias</li><li><strong>Custo:</strong> mais disciplina para colocar no lugar certo</li></ul></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🕸️ Grafo com backlinks</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Cada nota <strong class='text-teal-400'>linka</strong> outras. Busca pode caminhar no grafo. Estilo Obsidian.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Estrutura com backlinks</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">decisions/
+  fastapi-over-flask.md
+    "Discutimos em [[meeting-2026-04-20]].
+     Substituiu [[flask-exploration]].
+     Baseado em [[async-patterns]].
+     Relacionado a [[payments-architecture]]."
+
+patterns/
+  async-patterns.md
+    "Visto em [[fastapi-over-flask]].
+     Complementa [[small-prs]]."
+
+# Query: 'decisoes ligadas a arquitetura'
+# → caminha: payments-architecture → fastapi-over-flask
+#   → meeting-2026-04-20 → async-patterns → ...
+# → recupera cluster inteiro de contexto</pre></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Quando vale o esforço</h3><ul class="space-y-2 text-neutral-300"><li><strong>Recall contextual:</strong> ~95% com inferencias</li><li><strong>Adequado para:</strong> conhecimento densamente conectado</li><li><strong>Exige:</strong> habito de linkar ao escrever</li><li><strong>Ferramenta ideal:</strong> Obsidian (UI + backlinks automaticos)</li></ul></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🎯 Evoluindo de flat para taxonomia</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-teal-400'>Migrar e barato</strong> quando voce precisa. Nao precisa decidir tudo no dia 1.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Script de migracao</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env python3
+# Migrar knowledge.md flat para taxonomia 5-tipos
+
+import os, re, shutil
+from pathlib import Path
+
+# 1. Ler knowledge.md
+content = Path('~/.memory/knowledge.md').expanduser().read_text()
+
+# 2. Separar por data
+entries = re.split(r'## (\d{4}-\d{2}-\d{2})', content)
+
+# 3. Usar LLM (Gemini Flash) para classificar cada entry
+#    em: fact | decision | pattern | preference | event
+
+# 4. Mover cada uma para a pasta certa
+for entry in classified_entries:
+    target = f'~/.memory/knowledge/{entry.type}/{entry.slug}.md'
+    Path(target).expanduser().parent.mkdir(parents=True, exist_ok=True)
+    Path(target).expanduser().write_text(entry.content)
+
+# 5. Arquivar o knowledge.md original
+shutil.move('~/.memory/knowledge.md', '~/.memory/archive/knowledge-pre-migration.md')</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> LLM faz o trabalho pesado</h3>
+<p class="text-neutral-300">Classificar 100 entries a mao toma horas. Gemini Flash faz em 2 minutos por $0.01. Voce revisa 10 ambiguas.</p></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">📊 Tabela de decisao</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Regra pratica para escolher sem ruminar.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Decisao rapida</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">| Cenario                          | Estrutura           |
+|----------------------------------|---------------------|
+| Comecando, &lt;100 memorias        | Flat                |
+| 100-500 memorias mistas          | Taxonomia 4-tipos   |
+| 3+ projetos com sub-areas        | Hierarquia espacial |
+| Conhecimento densamente ligado   | Grafo (Obsidian)    |
+| Time grande com vocabs variados  | Grafo + semantica   |
+| Solo, pragmatico                 | Taxonomia 4-tipos   |
+
+Regra final: DUVIDA → taxonomia 4-tipos. Ganha 80% do beneficio com 20% do esforço.</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Review anual</h3>
+<p class="text-neutral-300">Uma vez por ano, revisar se a estrutura atual ainda serve. Migracao e barata; friccao de estrutura errada nao.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Flat basta ate 100 memorias</strong><span class="text-neutral-400"> — depois migra.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Taxonomia 4-tipos e sweet spot</strong><span class="text-neutral-400"> — +34% recall sem muito esforço.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Hierarquia espacial ganha em profundidade</strong><span class="text-neutral-400"> — projetos com sub-projetos.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Grafo e investimento grande</strong><span class="text-neutral-400"> — so se conteudo for densamente conectado.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-teal-400 mb-2">Proximo:</h3><p class="text-neutral-300">5.3 — Backends: markdown ao Pinecone</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-5-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-5-3.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">Proximo Modulo →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>

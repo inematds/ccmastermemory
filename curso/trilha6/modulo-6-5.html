@@ -1,50 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modulo 6.5: Memoria por agente e projeto | CC Master Memory</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
-    html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
-    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
-    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
-    html:not(.dark) .text-rose-400{color:#9f1239}html:not(.dark) .bg-rose-500\/20{background-color:rgba(225, 29, 72,.12)}html:not(.dark) .bg-rose-500\/10{background-color:rgba(225, 29, 72,.08)}
-    html:not(.dark) .border-rose-500\/30{border-color:rgba(225, 29, 72,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
-    html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
-    html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
-    html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 6.5: Memoria por agente e por projeto | CC Master Memory</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-rose-400{color:#9f1239}html:not(.dark) .bg-rose-500\/20{background-color:rgba(225, 29, 72,.12)}html:not(.dark) .bg-rose-500\/10{background-color:rgba(225, 29, 72,.08)}
+html:not(.dark) .border-rose-500\/30{border-color:rgba(225, 29, 72,.25)}html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}html:not(.dark) .hover\:text-yellow-300:hover{color:#854d0e}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}</style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.5</span></div></nav>
-  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.5</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">👥 Memoria por agente e projeto</h1><p class="text-lg text-neutral-400 max-w-3xl">Hook rotaciona vault por cwd, branch, ou papel.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Medio</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Core</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14"><div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">CC Master Memory</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div><div class="flex items-center space-x-1 sm:space-x-2"><a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Por que</span></a><a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">7 niveis</span></a><a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">18 hooks</span></a><a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">3 hooks</span></a><a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Backends</span></a><a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Projeto</span></a><button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button></div></div></div></nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.5</span></div></nav>
+<header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.5</span><h1 class="text-3xl sm:text-4xl font-bold mb-4">👥 Memoria por agente e por projeto</h1><p class="text-lg text-neutral-400 max-w-3xl">Um hook que rotaciona vault de memoria por cwd, git branch, ou papel do agente. Isolamento sem duplicacao.</p><div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl"><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Avancado</div><div class="text-xs text-neutral-400">Nivel</div></div><div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Pattern</div><div class="text-xs text-neutral-400">Tipo</div></div></div></div></header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section id="topico-1" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🗂️ Por cwd: projeto = pasta</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-rose-400'>Deteccao automatica</strong>: nome do diretorio vira nome do projeto. Hook escolhe memoria correspondente.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Routing por cwd</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">#!/usr/bin/env bash
+# session_start.sh com routing por projeto
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-8">
-      <h2 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📖</span>Conteudo detalhado em construcao</h2>
-      <p class="text-neutral-300">Os 6 topicos deste modulo estao detalhados no <strong>index da trilha</strong> — abra os topicos expansiveis para ver "O que e / Por que aprender / Conceitos-chave" de cada um.</p>
-      <p class="text-neutral-300 mt-3">A versao completa deste modulo, com boxes ricos, diagramas e labs executaveis, sera adicionada em releases futuros do curso.</p>
-    </div>
+INPUT=$(cat)
+CWD=$(echo "$INPUT" | jq -r '.cwd')
+PROJ=$(basename "$CWD")
 
-    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-8">
-      <h3 class="text-xl font-bold mb-4 text-rose-400">Os 6 topicos deste modulo</h3>
-      <ol class="space-y-3 text-neutral-300 list-decimal list-inside">
-        <li><strong class="text-rose-400">1.</strong> Conceito fundamental</li>
-        <li><strong class="text-rose-400">2.</strong> Como funciona na pratica</li>
-        <li><strong class="text-rose-400">3.</strong> Configuracao minima</li>
-        <li><strong class="text-rose-400">4.</strong> Exemplo trabalhado</li>
-        <li><strong class="text-rose-400">5.</strong> Armadilhas comuns</li>
-        <li><strong class="text-rose-400">6.</strong> Laboratorio aplicado</li>
-      </ol>
-    </div>
+# Carregar base (identidade global) + overlay (projeto especifico)
+BASE=$(cat ~/.memory/prime.md 2>/dev/null || echo '')
+OVERLAY=''
+if [[ -f "$HOME/.memory/projects/$PROJ/context.md" ]]; then
+  OVERLAY=$(cat "$HOME/.memory/projects/$PROJ/context.md")
+elif [[ -f ~/.memory/context.md ]]; then
+  OVERLAY=$(cat ~/.memory/context.md)
+fi
 
-    <div class="flex flex-col sm:flex-row gap-4"><a href="modulo-6-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-6-6.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a></div>
-  </main>
+CONTEXT="$BASE\n\n$OVERLAY"
 
-  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
-  <script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
+python3 -c "
+import json
+print(json.dumps({
+  'hookSpecificOutput': {
+    'hookEventName': 'SessionStart',
+    'additionalContext': '''$CONTEXT'''
+  }
+}))
+"</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Novo projeto = nova pasta</h3>
+<p class="text-neutral-300"><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>mkdir ~/.memory/projects/novo-proj</code> + seed context.md. Hook pega automatico.</p></div>
+</section>
+<section id="topico-2" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🌿 Por git branch</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-rose-400'>Features longas</strong> ganham com memoria por branch. Estado da feature isolado do main.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Routing por branch</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># Hook detecta branch atual
+BRANCH=$(cd "$CWD" &amp;&amp; git branch --show-current 2>/dev/null)
+PROJ=$(basename "$CWD")
+
+# Prioridade: branch especifico &gt; projeto &gt; global
+BRANCH_CTX="$HOME/.memory/projects/$PROJ/branches/$BRANCH.md"
+PROJ_CTX="$HOME/.memory/projects/$PROJ/context.md"
+DEFAULT_CTX="$HOME/.memory/context.md"
+
+if [[ -f "$BRANCH_CTX" ]]; then
+  OVERLAY=$(cat "$BRANCH_CTX")
+elif [[ -f "$PROJ_CTX" ]]; then
+  OVERLAY=$(cat "$PROJ_CTX")
+elif [[ -f "$DEFAULT_CTX" ]]; then
+  OVERLAY=$(cat "$DEFAULT_CTX")
+fi
+
+# Trabalhando em feature/new-auth? Claude ja sabe estado daquela feature.
+# Switch pra main? Memoria troca automaticamente.</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Uso em projetos de longo ciclo</h3>
+<p class="text-neutral-300">Feature de 2 meses? Branch-scoped context registra decisoes da feature sem poluir main.</p></div>
+</section>
+<section id="topico-3" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🧑‍💼 Por agente/papel</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Um humano pode <strong class='text-rose-400'>alternar papeis</strong>: comms, coder, writer. Cada papel com prime.md proprio.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Profiles por role</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto">~/.memory/
+├── prime.md                    (base global)
+└── profiles/
+    ├── comms/
+    │   └── prime.md            (estilo para emails, Slack)
+    ├── coder/
+    │   └── prime.md            (stack tecnica)
+    └── writer/
+        └── prime.md            (tom publico, evita jargao)
+
+# Hook le env var CLAUDE_ROLE
+ROLE="${CLAUDE_ROLE:-coder}"  # default coder
+ROLE_PRIME="$HOME/.memory/profiles/$ROLE/prime.md"
+
+if [[ -f "$ROLE_PRIME" ]]; then
+  BASE=$(cat "$ROLE_PRIME")
+else
+  BASE=$(cat ~/.memory/prime.md)
+fi
+
+# Usar
+$ CLAUDE_ROLE=comms claude
+  → Claude carrega perfil comms
+$ CLAUDE_ROLE=writer claude
+  → Claude carrega perfil writer</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Alias pra fluidez</h3>
+<p class="text-neutral-300"><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>alias claude-comms='CLAUDE_ROLE=comms claude'</code>. Um comando por papel.</p></div>
+</section>
+<section id="topico-4" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🔀 Fallback e heranca</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class='text-rose-400'>Base sempre</strong>, overlay quando existe. Identidade nao precisa repetir por projeto.</p>
+<div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center"><span class="mr-2">🧩</span> Cadeia de heranca</h3><p class="text-neutral-300 mb-4">Ordem de merge:</p><ul class="space-y-2 text-neutral-300"><li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Nivel 0:</strong> ~/.memory/prime.md (identidade permanente)</span></li><li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Nivel 1:</strong> profile/$ROLE/prime.md (se ROLE definido)</span></li><li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Nivel 2:</strong> projects/$PROJ/context.md (se em projeto conhecido)</span></li><li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Nivel 3:</strong> projects/$PROJ/branches/$BRANCH.md (se em feature branch)</span></li><li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Resultado:</strong> concatenacao de todos existentes</span></li></ul></div>
+</section>
+<section id="topico-5" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🎛️ Override manual</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Escape hatch para <strong class='text-rose-400'>casos excepcionais</strong>. Forçar profile nao-inferido.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6"><h3 class="text-lg font-semibold mb-4 flex items-center"><span class="mr-2">📐</span> Override via env var</h3><pre class="text-neutral-300 text-sm font-mono whitespace-pre overflow-x-auto"># Forçar perfil especifico
+$ CLAUDE_MEMORY_PROFILE=writer claude
+  → ignora routing automatico, usa perfil writer
+
+# Forçar projeto especifico
+$ CLAUDE_MEMORY_PROJECT=legacy-system claude
+  → usa memoria do projeto legacy mesmo se cwd for outro
+
+# Combinar
+$ CLAUDE_MEMORY_PROFILE=comms CLAUDE_MEMORY_PROJECT=payments claude
+  → comms context + projeto payments
+
+# No hook:
+PROFILE="${CLAUDE_MEMORY_PROFILE:-$(infer_profile)}"
+PROJECT="${CLAUDE_MEMORY_PROJECT:-$(infer_project "$CWD")}"</pre></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Use com cautela</h3>
+<p class="text-neutral-300">Override manual e poder. Abuse dele e voce perde o beneficio do routing automatico. Reserve pra casos reais.</p></div>
+</section>
+<section id="topico-6" class="mb-16">
+<div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🧪 Lab: multi-projeto</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Exercicio ativo. <strong class='text-rose-400'>Valide o routing</strong> antes de depender.</p>
+<div class="space-y-6 mb-6"><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">1</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Setup</h4><p class="text-neutral-300 text-sm">Crie 3 pastas em ~/projects/: {proj-a, proj-b, proj-c}. Crie 3 context.md diferentes em ~/.memory/projects/{proj-a,proj-b,proj-c}/.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">2</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Sessao em proj-a</h4><p class="text-neutral-300 text-sm"><code class='bg-dark-700 px-2 py-0.5 rounded text-xs'>cd ~/projects/proj-a &amp;&amp; claude</code>. Pergunte 'qual projeto ativo?'. Resposta deve mencionar proj-a.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">3</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Sessao em proj-b</h4><p class="text-neutral-300 text-sm">Mesma coisa, outro projeto. Resposta deve trocar.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">4</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Proj-c (sem memoria especifica)</h4><p class="text-neutral-300 text-sm">Deve cair no fallback do context.md global.</p></div></div><div class="flex items-start space-x-4"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">5</span></div><div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-white mb-2">Validar isolamento</h4><p class="text-neutral-300 text-sm">Pergunta sobre proj-a dentro de sessao de proj-b? Claude nao deve saber, provando isolamento.</p></div></div></div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Teste real</h3>
+<p class="text-neutral-300">Sem teste, voce acha que funciona. Com teste, voce sabe. Invista 15 minutos — vai usar diariamente.</p></div>
+</section>
+
+<section class="mb-12">
+<div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Routing por cwd e padrao</strong><span class="text-neutral-400"> — detecta projeto pelo diretorio.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Branch scope isola features</strong><span class="text-neutral-400"> — util em trabalhos longos.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Role profiles</strong><span class="text-neutral-400"> — comms, coder, writer com style proprio.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Heranca evita duplicacao</strong><span class="text-neutral-400"> — base + overlay.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-rose-400 mb-2">Proximo:</h3><p class="text-neutral-300">6.6 — Metricas e evolucao continua</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-6-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo anterior</a><a href="modulo-6-6.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a></div>
+</div></section>
+
+</main>
+<footer class="border-t border-dark-600 py-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>CC Master Memory · INEMA.CLUB · 2026</p></div></footer>
+<script>const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});</script>
 </body></html>
